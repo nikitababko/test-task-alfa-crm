@@ -27,7 +27,7 @@ const Register: FC = () => {
 
   const handleSubmit = (e: FormSubmit) => {
     e.preventDefault();
-    dispatch(authCustomer({ email, password }));
+    dispatch(authCustomer({ email, api_key: password }));
   };
 
   return (

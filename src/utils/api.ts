@@ -2,9 +2,12 @@ import axios from 'axios';
 
 import { IUser } from './TypeScript';
 
-const token = '32fc9435871de7620cd9851c2e337193';
+const token: any =
+  localStorage.getItem('access_token') && localStorage.getItem('access_token');
 
 export const postAPI = async (url: string, user: IUser) => {
+  console.log(user);
+
   const res = await axios.post(url, user);
 
   return res;

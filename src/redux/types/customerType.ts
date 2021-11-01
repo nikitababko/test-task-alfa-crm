@@ -1,4 +1,4 @@
-import { IAuth } from 'utils/TypeScript';
+import { IUser } from 'utils/TypeScript';
 
 export const GET_CUSTOMERS = 'GET_CUSTOMERS';
 export const AUTH_CUSTOMERS = 'AUTH_CUSTOMERS';
@@ -10,7 +10,7 @@ export interface IGetCustomers {
 
 export interface IAuthCustomer {
   type: typeof AUTH_CUSTOMERS;
-  payload: IAuth;
+  payload: IUser;
 }
 
 export type ICustomerType = IGetCustomers | IAuthCustomer;

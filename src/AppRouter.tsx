@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import { RootStore } from 'utils/TypeScript';
+
 import { privateRoutes, publicRoutes, RouteNames } from './routes';
 
 const AppRouter: FC = () => {
-  const isAuth = true;
+  const { auth } = useSelector((state: any) => state);
 
-  return !isAuth ? (
+  return auth.token ? (
     <Switch>
       {privateRoutes.map((route) => (
         <Route key={route.path} {...route} />

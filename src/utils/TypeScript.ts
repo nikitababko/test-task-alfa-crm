@@ -19,7 +19,7 @@ export interface ICustomer {
 
 export interface IUser {
   email: string;
-  password: string;
+  api_key: string;
 }
 
 export type InputChange = ChangeEvent<HTMLInputElement>;

@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { IAuthType } from 'redux/types/authType';
+import { AUTH, IAuthType } from 'redux/types/authType';
 import { GET_CUSTOMERS, ICustomerType } from 'redux/types/customerType';
 
 import { getAPI, postAPI } from 'utils/api';
@@ -14,7 +14,12 @@ export const authCustomer =
       // });
       const res = await postAPI('/auth/login', user);
 
-      console.log(res);
+      localStorage.setItem('access_token', res.data.token);
+
+      dispatch({
+        type: AUTH,
+        payload: res.data,
+      });
 
       // dispatch({
       //   type: ALERT,
