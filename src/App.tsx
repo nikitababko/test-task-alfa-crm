@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import styled from 'styled-components';
 
-function App() {
+import AppRouter from './AppRouter';
+import { getCustomers } from 'redux/actions/customerAction';
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+`;
+
+const App: FC = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCustomers());
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <AppRouter />
+    </Container>
   );
-}
+};
 
 export default App;
