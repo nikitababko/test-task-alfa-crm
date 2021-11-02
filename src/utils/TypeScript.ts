@@ -22,4 +22,11 @@ export interface IUser {
   api_key: string;
 }
 
+export interface INewCustomer {
+  name: string;
+  branch_ids: string;
+  legal_type: string;
+  is_study: string;
+}
+
 export type InputChange = ChangeEvent<HTMLInputElement>;

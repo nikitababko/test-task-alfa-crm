@@ -2,7 +2,8 @@ import { Dispatch } from 'redux';
 
 import { GET_CUSTOMERS, ICustomerType } from 'redux/types/customerType';
 
-import { getAPI } from 'utils/api';
+import { createCustomerAPI, getAPI } from 'utils/api';
+import { INewCustomer } from 'utils/TypeScript';
 
 export const getCustomers =
   (name?: string) => async (dispatch: Dispatch<ICustomerType>) => {
@@ -28,6 +29,28 @@ export const getCustomers =
           payload: res.data.items,
         });
       }
+
+      // dispatch({
+      //   type: ALERT,
+      //   payload: { loading: false },
+      // });
+    } catch (error: any) {
+      // dispatch({
+      //   type: ALERT,
+      //   payload: { errors: error.response.data.msg },
+      // });
+    }
+  };
+
+export const createCustomer =
+  (newCustomer: INewCustomer) => async (dispatch: Dispatch<ICustomerType>) => {
+    try {
+      // dispatch({
+      //   type: ALERT,
+      //   payload: { loading: true },
+      // });
+
+      const res = await createCustomerAPI('/customer/create', newCustomer);
 
       // dispatch({
       //   type: ALERT,

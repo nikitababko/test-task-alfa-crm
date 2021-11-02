@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { RootStore } from 'utils/TypeScript';
@@ -8,7 +8,15 @@ import { privateRoutes, publicRoutes, RouteNames } from './routes';
 const AppRouter: FC = () => {
   const { auth } = useSelector((state: any) => state);
 
-  return auth.token ? (
+  const [token, setToken] = useState('');
+
+  useEffect(() => {
+    const token: any = localStorage.getItem('access_token');
+
+    setToken(token);
+  }, []);
+
+  return auth.token || token ? (
     <Switch>
       {privateRoutes.map((route) => (
         <Route key={route.path} {...route} />
