@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { FormSubmit, InputChange } from 'utils/TypeScript';
 import { createCustomer } from 'redux/actions/customerAction';
+import styled from 'styled-components';
 
 const AddCustomer = () => {
   const initialState = {
@@ -26,11 +27,18 @@ const AddCustomer = () => {
     dispatch(createCustomer(newCustomer));
   };
 
+  const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  `;
+
   return (
     <div>
       <h2>Добавить пользователя</h2>
 
-      <form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <input
           type="text"
           name="name"
@@ -57,7 +65,7 @@ const AddCustomer = () => {
         />
 
         <button type="submit">Create</button>
-      </form>
+      </Form>
     </div>
   );
 };
